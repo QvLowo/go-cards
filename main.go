@@ -1,10 +1,9 @@
 package main
 
-import "fmt"
-
 func main() {
 	cards := newDeck()
-	fmt.Println(cards.toString()) // 拼接成一個用逗號分隔的字串
+	cards.saveToFile("cards")
+	// fmt.Println(cards.toString()) // 拼接成一個用逗號分隔的字串
 
 	// // 因為都在同一個package,所以可以直接使用deal方法,不用額外import等等
 	// hand, remainingCards := deal(cards, 5)

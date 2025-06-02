@@ -1,8 +1,10 @@
 package main
 
 func main() {
-	cards := newDeck()
-	cards.saveToFile("cards")
+	cards := newDeckFromFile("cards")
+	cards.print()
+	// cards := newDeck()
+	// cards.saveToFile("cards")
 	// fmt.Println(cards.toString()) // 拼接成一個用逗號分隔的字串
 
 	// // 因為都在同一個package,所以可以直接使用deal方法,不用額外import等等

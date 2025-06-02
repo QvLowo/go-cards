@@ -6,6 +6,8 @@ import (
 	"strings"
 )
 
+// Create a new type of 'deck'
+// which is a slice of strings
 type deck []string
 
 func newDeck() deck {
@@ -42,4 +44,15 @@ func (d deck) toString() string {
 // ioutil.WriteFile() is deprecated (since Go v1.16) use os.WriteFile instead.
 func (d deck) saveToFile(filename string) error {
 	return os.WriteFile(filename, []byte(d.toString()), 0666)
+}
+
+func newDeckFromFile(filename string) deck {
+	bs, err := os.ReadFile(filename) //bs = byte slice
+	if err != nil {
+		fmt.Println("Error:", err)
+		os.Exit(1) // quit the program
+	}
+
+	s := strings.Split(string(bs), ",") // []string
+	return deck(s)                      // type conversions
 }
